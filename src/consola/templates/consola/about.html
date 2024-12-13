@@ -1,6 +1,10 @@
 {% extends 'consola/base.html' %}
 
 {% block contenido %}
-    <h1>Acerca de mi</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ex! Amet esse delectus quo neque harum aliquid veniam ut perspiciatis a, voluptate molestiae dolore ipsam in quod! Officiis, porro facere?</p>
+    <h1>Cual es la finalidad del sitio?</h1>
+    <p>Con este sitio buscamos tener un registro de los juegos que disfrutamos y cdo empezamos a hacerlo. Con el tiempo se iran desarrollando nuevas funcionalidades.</p>
 {% endblock contenido %}
+
+{% block piepagina %}
+    <a href="{% url 'consola:index' %}"><button>Inicio</button></a>
+{% endblock piepagina %}
