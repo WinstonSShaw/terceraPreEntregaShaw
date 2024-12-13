@@ -1,0 +1,12 @@
+{% extends 'consola/base.html' %}
+
+{% block contenido %}
+    <h1>Lista de Consolas</h1>
+    <a href="{% url 'consola:consola_create' %}"><button>Crear Consola</button></a>
+    <ul>
+        {% for consola in consolas %}
+            <p>{{ consola.nombre }}</p>
+        {% endfor %}
+    </ul>
+    
+{% endblock contenido %}

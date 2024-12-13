@@ -1,0 +1,12 @@
+{% extends 'consola/base.html' %}
+
+{% block contenido %}
+    <h1>Lista de Jugadores</h1>
+    <a href="{% url 'consola:jugador_create' %}"><button>Crear Jugador</button></a>
+    <ul>
+        {% for jugador in jugadores %}
+            <p>{{ jugador.juego }} | {{ jugador.dni }}</p>
+        {% endfor %}
+    </ul>
+    
+{% endblock contenido %}

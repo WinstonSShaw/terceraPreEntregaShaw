@@ -1,0 +1,12 @@
+{% extends 'consola/base.html' %}
+
+{% block contenido %}
+    <h1>Lista de Juegos</h1>
+    <a href="{% url 'consola:juego_create' %}"><button>Crear Juego</button></a>
+    <ul>
+        {% for juego in juegos %}
+            <p>{{ juego.consola }} | {{ juego.nombre_juego }} | {{ juego.fecha_inicio }}</p>
+        {% endfor %}
+    </ul>
+    
+{% endblock contenido %}
