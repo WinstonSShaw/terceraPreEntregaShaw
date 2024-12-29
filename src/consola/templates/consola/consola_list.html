@@ -2,6 +2,11 @@
 
 {% block contenido %}
     <h1>Lista de Consolas</h1>
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'consola:consola_create' %}">
+            <button class="btn-primary">Crear Consola</button>
+        </a>
+    </div>
     <form method="get" action="" style="margin-bottom: 20px;">
         <input type="text" name="q" placeholder="Buscar consola..." value="{{ search_query | default:'' }}">
         <button type="submit" class="btn-primary">Buscar</button>
