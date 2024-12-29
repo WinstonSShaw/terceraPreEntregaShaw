@@ -6,6 +6,8 @@
     <ul>
         {% for jugador in jugadores %}
             <p>{{ jugador.juego }} | {{ jugador.dni }}</p>
+            <a href="{% url 'consola:jugador_edit' jugador.pk %}">Editar</a>
+            <a href="{% url 'consola:jugador_delete' jugador.pk %}">Eliminar</a>
         {% endfor %}
     </ul>
     

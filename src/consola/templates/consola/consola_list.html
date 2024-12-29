@@ -6,6 +6,8 @@
     <ul>
         {% for consola in consolas %}
             <p>{{ consola.nombre }}</p>
+            <a href="{% url 'consola:consola_edit' consola.pk %}">Editar</a>
+            <a href="{% url 'consola:consola_delete' consola.pk %}">Eliminar</a>
         {% endfor %}
     </ul>
     

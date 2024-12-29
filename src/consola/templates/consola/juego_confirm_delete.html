@@ -1,0 +1,9 @@
+{% extends 'consola/base.html' %}
+{% block contenido %}
+  <h2>¿Estás seguro de que deseas eliminar el juego "{{ juego.nombre_juego }}"?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'consola:juego_list' %}">Cancelar</a>
+  </form>
+{% endblock %}

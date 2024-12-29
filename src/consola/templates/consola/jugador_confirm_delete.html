@@ -1,0 +1,9 @@
+{% extends 'consola/base.html' %}
+{% block contenido %}
+  <h2>¿Estás seguro de que deseas eliminar al jugador con DNI "{{ jugador.dni }}"?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+    <a href="{% url 'consola:jugador_list' %}">Cancelar</a>
+  </form>
+{% endblock %}

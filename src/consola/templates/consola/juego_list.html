@@ -6,6 +6,8 @@
     <ul>
         {% for juego in juegos %}
             <p>{{ juego.consola }} | {{ juego.nombre_juego }} | {{ juego.fecha_inicio }}</p>
+            <a href="{% url 'consola:juego_edit' juego.pk %}">Editar</a>
+            <a href="{% url 'consola:juego_delete' juego.pk %}">Eliminar</a>
         {% endfor %}
     </ul>
     
