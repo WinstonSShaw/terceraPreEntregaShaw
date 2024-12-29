@@ -2,7 +2,11 @@
 
 {% block contenido %}
     <h1>Lista de Juegos</h1>
-    <a href="{% url 'consola:juego_create' %}"><button class="btn-primary">Crear Juego</button></a>
+    <form method="get" action="" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Buscar juego..." value="{{ search_query | default:'' }}">
+        <button type="submit" class="btn-primary">Buscar</button>
+        <a href="{% url 'consola:juego_list' %}" class="btn-secondary">Limpiar</a>
+    </form>
     <ul class="styled-list">
         {% for juego in juegos %}
             <li>
@@ -12,6 +16,8 @@
                     <a href="{% url 'consola:juego_delete' juego.pk %}"><button class="btn-danger">Eliminar</button></a>
                 </div>
             </li>
+        {% empty %}
+            <li>No se encontraron juegos que coincidan con tu búsqueda.</li>
         {% endfor %}
     </ul>
 {% endblock contenido %}

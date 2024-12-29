@@ -2,7 +2,11 @@
 
 {% block contenido %}
     <h1>Lista de Consolas</h1>
-    <a href="{% url 'consola:consola_create' %}"><button class="btn-primary">Crear Consola</button></a>
+    <form method="get" action="" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Buscar consola..." value="{{ search_query | default:'' }}">
+        <button type="submit" class="btn-primary">Buscar</button>
+        <a href="{% url 'consola:consola_list' %}" class="btn-secondary">Limpiar</a>
+    </form>
     <ul class="styled-list">
         {% for consola in consolas %}
             <li>
@@ -12,6 +16,8 @@
                     <a href="{% url 'consola:consola_delete' consola.pk %}"><button class="btn-danger">Eliminar</button></a>
                 </div>
             </li>
+        {% empty %}
+            <li>No se encontraron consolas que coincidan con tu búsqueda.</li>
         {% endfor %}
     </ul>
 {% endblock contenido %}

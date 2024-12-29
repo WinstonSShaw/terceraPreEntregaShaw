@@ -16,7 +16,10 @@ def about(request):
 @login_required
 def consola_list(request):
     query = Consola.objects.all()
-    context = {"consolas": query}
+    search_query = request.GET.get('q')
+    if search_query:
+        query = query.filter(nombre__icontains=search_query)
+    context = {"consolas": query, "search_query": search_query}
     return render(request, "consola/consola_list.html", context)
 
 @login_required
@@ -53,7 +56,10 @@ def consola_delete(request, pk):
 @login_required
 def juego_list(request):
     query = Juego.objects.all()
-    context = {"juegos": query}
+    search_query = request.GET.get('q')
+    if search_query:
+        query = query.filter(nombre_juego__icontains=search_query)
+    context = {"juegos": query, "search_query": search_query}
     return render(request, "consola/juego_list.html", context)
 
 @login_required
@@ -90,7 +96,10 @@ def juego_delete(request, pk):
 @login_required
 def jugador_list(request):
     query = Jugador.objects.all()
-    context = {"jugadores": query}
+    search_query = request.GET.get('q')
+    if search_query:
+        query = query.filter(dni__icontains=search_query)
+    context = {"jugadores": query, "search_query": search_query}
     return render(request, "consola/jugador_list.html", context)
 
 @login_required

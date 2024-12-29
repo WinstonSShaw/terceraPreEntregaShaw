@@ -2,16 +2,22 @@
 
 {% block contenido %}
     <h1>Lista de Jugadores</h1>
-    <a href="{% url 'consola:jugador_create' %}"><button class="btn-primary">Crear Jugador</button></a>
+    <form method="get" action="" style="margin-bottom: 20px;">
+        <input type="text" name="q" placeholder="Buscar jugador (DNI)..." value="{{ search_query | default:'' }}">
+        <button type="submit" class="btn-primary">Buscar</button>
+        <a href="{% url 'consola:jugador_list' %}" class="btn-secondary">Limpiar</a>
+    </form>
     <ul class="styled-list">
         {% for jugador in jugadores %}
             <li>
-                <span>{{ jugador.juego }} | {{ jugador.dni }}</span>
+                <span>{{ jugador.juego }} | DNI: {{ jugador.dni }}</span>
                 <div class="actions">
                     <a href="{% url 'consola:jugador_edit' jugador.pk %}"><button class="btn-secondary">Editar</button></a>
                     <a href="{% url 'consola:jugador_delete' jugador.pk %}"><button class="btn-danger">Eliminar</button></a>
                 </div>
             </li>
+        {% empty %}
+            <li>No se encontraron jugadores que coincidan con tu búsqueda.</li>
         {% endfor %}
     </ul>
 {% endblock contenido %}
