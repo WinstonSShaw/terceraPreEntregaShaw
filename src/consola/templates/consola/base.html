@@ -15,6 +15,26 @@
             margin: 0;
         }
 
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
         main {
             flex: 1; /* Expande el contenido principal para llenar el espacio disponible */
         }
@@ -24,18 +44,53 @@
             text-align: center; /* Centrar el contenido */
             padding: 1em;
         }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-section p {
+            margin: 0 10px;
+        }
+
+        .auth-section button {
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body style="text-align: center;">
+    <header>
+        <nav>
+            <div>
+                <a href="{% url 'consola:index' %}">Inicio</a>
+                <a href="{% url 'consola:about' %}">Quiénes Somos</a>
+            </div>
+            <div class="auth-section">
+                {% if user.is_authenticated %}
+                    <p>Bienvenido, {{ user.username }}</p>
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit">Cerrar Sesión</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}"><button>Iniciar Sesión</button></a>
+                    <a href="{% url 'consola:register' %}"><button>Registrarse</button></a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
     <main>
         {% block contenido %}
         
         {% endblock contenido %}
     </main>  
     <footer>
+        
         {% block piepagina %}
             <a href="{% url 'consola:index' %}"><button>Inicio</button></a>
             <a href="{% url 'consola:about' %}"><button>Quienes somos?</button></a>
+            <button onclick="window.history.back()" style="margin-left: 10px;">Volver Atrás</button>
         {% endblock piepagina %}
     </footer>
 </body>

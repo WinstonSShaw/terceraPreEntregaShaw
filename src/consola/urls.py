@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from .views import about, index, consola_list, juego_list, jugador_list, consola_create, juego_create, jugador_create, consola_edit, consola_delete, juego_edit, juego_delete, jugador_edit, jugador_delete
+from .views import about, index, consola_list, juego_list, jugador_list, consola_create, juego_create, jugador_create, consola_edit, consola_delete, juego_edit, juego_delete, jugador_edit, jugador_delete, register
 
 app_name = "consola"
 
@@ -20,5 +20,6 @@ urlpatterns = [
     path("juego/<int:pk>/delete/", juego_delete, name="juego_delete"),
     path("jugador/<int:pk>/edit/", jugador_edit, name="jugador_edit"),
     path("jugador/<int:pk>/delete/", jugador_delete, name="jugador_delete"),
+    path('accounts/register/', register, name='register'),
 ]
 
