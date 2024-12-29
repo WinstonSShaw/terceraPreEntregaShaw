@@ -2,13 +2,16 @@
 
 {% block contenido %}
     <h1>Lista de Juegos</h1>
-    <a href="{% url 'consola:juego_create' %}"><button>Crear Juego</button></a>
-    <ul>
+    <a href="{% url 'consola:juego_create' %}"><button class="btn-primary">Crear Juego</button></a>
+    <ul class="styled-list">
         {% for juego in juegos %}
-            <p>{{ juego.consola }} | {{ juego.nombre_juego }} | {{ juego.fecha_inicio }}</p>
-            <a href="{% url 'consola:juego_edit' juego.pk %}">Editar</a>
-            <a href="{% url 'consola:juego_delete' juego.pk %}">Eliminar</a>
+            <li>
+                <span>{{ juego.consola }} | {{ juego.nombre_juego }} | {{ juego.fecha_inicio }}</span>
+                <div class="actions">
+                    <a href="{% url 'consola:juego_edit' juego.pk %}"><button class="btn-secondary">Editar</button></a>
+                    <a href="{% url 'consola:juego_delete' juego.pk %}"><button class="btn-danger">Eliminar</button></a>
+                </div>
+            </li>
         {% endfor %}
     </ul>
-    
 {% endblock contenido %}

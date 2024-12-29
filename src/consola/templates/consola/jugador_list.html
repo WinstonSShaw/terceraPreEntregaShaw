@@ -2,13 +2,16 @@
 
 {% block contenido %}
     <h1>Lista de Jugadores</h1>
-    <a href="{% url 'consola:jugador_create' %}"><button>Crear Jugador</button></a>
-    <ul>
+    <a href="{% url 'consola:jugador_create' %}"><button class="btn-primary">Crear Jugador</button></a>
+    <ul class="styled-list">
         {% for jugador in jugadores %}
-            <p>{{ jugador.juego }} | {{ jugador.dni }}</p>
-            <a href="{% url 'consola:jugador_edit' jugador.pk %}">Editar</a>
-            <a href="{% url 'consola:jugador_delete' jugador.pk %}">Eliminar</a>
+            <li>
+                <span>{{ jugador.juego }} | {{ jugador.dni }}</span>
+                <div class="actions">
+                    <a href="{% url 'consola:jugador_edit' jugador.pk %}"><button class="btn-secondary">Editar</button></a>
+                    <a href="{% url 'consola:jugador_delete' jugador.pk %}"><button class="btn-danger">Eliminar</button></a>
+                </div>
+            </li>
         {% endfor %}
     </ul>
-    
 {% endblock contenido %}
